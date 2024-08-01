@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>veszor</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=1">
+	<link id="page_favicon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAASxJREFUOE9tU0kSwzAIA/f/Ty60WrCdTnNIMgYLIUR2dwefjuiMSP7xlekfHPJUwY6ORBA5B0Aw+wEuEXSRlxjUmU7TAMhdCIABSygNRcoEjTx5XW9CZnUjT9gAmcuugFro0g3EAquMKAO7hQkLxCTcZ5MJLpBjLrVA6fpXAwGxilu4GVX3ZtBVAe5kMHpJfSiMSi8LOLpZUKo/DCAZYEeE0wl7XrmsP7nz4qhbXWz1McY9uRn/CHtNF6ODpFNXDEZjQN6mcRNgsscznjsiYh4WbdtDtkEt5Y+wxydjYDOYwnbfcbXJ23eeDvSoKo11rHzpN5tx+5p8QGitlEPfIi4A71Mn07YkP1vlLZPZ6AMBlKzmUR4m9w7MUs3eutBfJ3oz9JGUjw29TfMNfQAIB93Gj2+wiAAAAABJRU5ErkJggg==" rel="icon" type="image/x-icon">
+	<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
+	<style type="text/css">
+
+		::selection{
+					background: hsl(222, 4%, 33%);
+					color: hsl( 0, 0%, 100% )
+					}
+		::-moz-selection{
+					background: hsl(222, 4%, 33%);
+					color: hsl( 0, 0%, 100% )
+					}
+
+		::-webkit-scrollbar{
+							width: 10px;
+							background: transparent
+							}
+
+		::-webkit-scrollbar-track{ background: transparent }
+		::-webkit-scrollbar-thumb{
+								background: transparent;
+								border-top: 0 !important;
+								border-bottom: 0 !important;
+								border-left: 10px solid hsla(222, 100%, 11%, 0.2);
+								}
+
+		*{
+			padding: 0;
+			margin: 0;
+			font-family: sans-serif;		
+			outline: none;
+/*			user-select: none;
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-o-user-select: none;*/
+			}
+
+
+		body{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			}
+
+			#logo{
+				margin: 60px auto;
+				width: 320px;
+				height: 320px;
+				background: url(data:image/png;base64,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);
+				background-repeat: no-repeat;
+				background-size: 120px;
+				background-position: top center;
+				padding: 120px 20px;
+				box-sizing: border-box;
+				word-break: break-all;
+				font-size: 13px;
+				}
+
+				pre{
+					word-break: break-all;
+					padding-bottom: 120px;
+					}
+
+
+				.image{
+					width: 120px;
+					height: 120px;
+					border-radius: 180px;
+					background: url(me.jpg);
+					background-size: cover;
+					background-repeat: no-repeat;
+					}
+
+	</style>
+</head>
+<body>
+
+	<div id="logo">
+		<pre>
+			<h1>veszor</h1>
+Secure Zen Browser
+<br>
+Salut! Bonjour,
+je m'appelle Avril,
+et je fais ma thèse en systèmes.
+
+Je développe un navigateur web appelé veszor,
+et comme condition je dois être 
+inscrit sur tous les réseaux sociaux,
+pour approuver les travaux.
+
+J'étais en train de m'inscrire sur TikTok,
+et j'avais vu le nom libre,
+et maintenant je remarque que c'est sa propriété.
+
+Je veux te demander une faveur,
+Si vous pouvez coopérer avec moi,
+pour pouvoir approuver mon étude.
+
+Je vous laisse ce message du domaine,
+afin que vous puissiez vérifier le 
+dilemme dans lequel je me trouve.
+
+S'il vous plaît, permettez-moi le 
+nom d'utilisateur pour obtenir mon diplôme des systèmes.
+
+Je vois que votre compte est presque nouveau.
+
+PS : je ne parle pas français.
+
+Dans ce processus, j'ai dû enregistrer plusieurs noms,
+car si un réseau social se retrouve sans utilisateur,
+Je ne peux pas remettre mon mémoire.
+
+Vous pouvez vérifier ici:
+
+<h3>veszor.com</h3>
+twitter, 
+instagram, 
+facebook,
+VK,
+github,
+medium,
+gravatar,
+youtube,
+que les utilisateurs de veszor ont le même symbole
+qui apparaît au début de cette page.
+
+Je vous remercie, s'il vous plaît, 
+réfléchissez et aidez-moi.
+
+Merci beaucoup.
+
+
+Cordialement, 
+
+<div class="image"></div>
+<center>
+	
+<h2>Avril.</h2>
+		</pre>
+</center>
+	
+
+	</div>
+
+</body>
+</html>
